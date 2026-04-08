@@ -1,0 +1,2 @@
+Only use buffered reader once and save to instance variable
+Rename all methods so they are more accurate
