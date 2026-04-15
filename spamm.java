@@ -77,10 +77,25 @@ public class spamm {
             if(words[i].toLowerCase().equals("claim")){
                 int claimind = i;
                 for(int j = i; j < words.length; j++){
-                    if(words[j].toLowerCase().equals("now")){// claim this now
+                    if(words[j].toLowerCase().equals("now")){// claim this hdtv h h h h  200 sentences now
                         int prind = j;
                         if(prind - i < 9){
                             if(prind - i < 5){
+                                spamchce += 1.0;
+                                System.out.println("The email is likely spam");
+                            }
+                            else{
+                                System.out.println("lets check the rest of the email for more spam indicators");
+                                spamchce += 0.2;
+                            }
+                        }
+                    }
+                }
+                for(int j = i; j < words.length; j++){
+                    if(words[j].toLowerCase().equals("your")){// claim this now
+                        int yrind = j;
+                        if(yrind - i < 9){
+                            if(yrind - i < 5){
                                 spamchce += 1.0;
                                 System.out.println("The email is likely spam");
                             }
@@ -103,3 +118,4 @@ public class spamm {
         
     }
 }
+
