@@ -13,6 +13,10 @@ public class spammm{
         int hexcl = 0;// how many total exclamation marks in all ham emails
         int charsp = 0;// total char count in spam
         int charh = 0;// total char count in ham
+        int urlh = 0;// total url in ham 
+        int urlsp = 0;// total url in spam
+
+
 
         HashMap<String,Integer> maps = new HashMap<>();//occurance in each spam email
         HashMap<String,Integer> maph = new HashMap<>();//occurance in each ham email
@@ -26,7 +30,12 @@ public class spammm{
         ArrayList<String> spamemails = new ArrayList<>(); //spam emails find the average time a word occurs in a spam email
         ArrayList<String> hamemails = new ArrayList<>(); //ham emails find the average time a word occurs in a ham email
         
-        String[] spookwords = {"free contract urgent claim"};
+        String[] spookwords = {"free contract urgent claim click "};
+        int diffspkct = 0 ;
+        String[] links = {"http www .com .org .net .ly "};
+        String[]excep = {"freedom contractor disclaimer proclaim overclaim underclaim freeload freely freeman carefree freewall freefall contraction contractive contractility contractile contractor contractual contractible"};
+
+        
         
 
 
@@ -34,15 +43,22 @@ public class spammm{
         ArrayList<String> wordocc = new ArrayList<>();
         int emails = emailsct.size();
 
-       
-
+        // SPAM
         for(int i = 0;i<spamemails.size();i++){
             String[] wordinsp = spamemails.get(i).split(" ");
             for(int j = 0;j<wordinsp.length;j++){
                 wctsp++;
                 for(int k = 0;k < spookwords.length;k++){
-                    if((wordinsp[j].toLowerCase().contains(spookwords[k])) == true){
-                        spkspam++;
+                    if((wordinsp[j].toLowerCase().equals(spookwords[k])) == true){
+                        int sppp = 0;
+                        for(int sp = 0; sp<excep.length;sp++){
+                            if ((wordinsp[j].contains(excep[sp])) == true){
+                                sppp++;
+                            }
+                        }
+                        if(sppp == 0){
+                            spkspam++;
+                        }
                     } 
                 }
             }
@@ -63,13 +79,29 @@ public class spammm{
         double honkk = spex*100;// 
 
 
+        for(int i = 0;i<spamemails.size();i++){
+            String[] wordsp = spamemails.get(i).split(" ");
+            for(int j = 0;j<wordsp.length;j++){
+                for(int k = 0;k < links.length;k++){
+                    if((wordsp[j].toLowerCase().equals(links[k])) == true){
+                        urlsp++;
+                    } 
+                }
+            }
+        }
+        double urlpwordsp = urlsp/wctsp;
+
+
+
+
+// HAM
 
         for(int i = 0;i<hamemails.size();i++){
             String[] wordinh = hamemails.get(i).split(" ");
             for(int j = 0;j<wordinh.length;j++){
                 wcth++;
                 for(int k = 0;k < spookwords.length;k++){
-                    if((wordinh[j].toLowerCase().contains(spookwords[k])) == true){
+                    if((wordinh[j].toLowerCase().equals(spookwords[k])) == true){
                         spkham++;
                     } 
                 }
@@ -89,6 +121,31 @@ public class spammm{
             }
         }
         double hamexcl = hexcl/wcth;// how many exclamation points per char
+
+        for(int i = 0;i<hamemails.size();i++){
+            String[] wordh = hamemails.get(i).split(" ");
+            for(int j = 0;j<wordh.length;j++){
+                
+                for(int k = 0;k < links.length;k++){
+                    if((wordh[j].toLowerCase().equals(links[k])) == true){
+                        urlh++;
+                    } 
+                }
+            }
+        }
+        double urlpwordh = urlh/wcth;
+
+
+        // END
+//1/5 = spam 1/400 = ham
+
+// Test set
+
+        ArrayList<String> emailtest = new ArrayList<>();
+        for(int t = 0; t<emailtest.size();t++){
+            String[]wordstest = emailtest[i].split
+        }
+
 
 
 
