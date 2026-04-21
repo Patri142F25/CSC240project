@@ -1,6 +1,4 @@
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 public class emailbin{
     public static void main(String[]args){
@@ -8,9 +6,11 @@ public class emailbin{
         HashMap<String, Integer> maph = new HashMap<>();
         HashMap<String, Integer> mapavgsp = new HashMap<>();
         HashMap<String, Integer> mapavgh = new HashMap<>();
-        int wsph = worddd.getword
-        
         ArrayList<String> emlcmb = new ArrayList<>();
+
+        ArrayList<String> spamemails = new ArrayList<>();
+
+
 
         // Arraylist<String> wordocc = n a l<>;
         // int emails = emailsct.length;
