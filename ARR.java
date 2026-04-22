@@ -30,16 +30,51 @@
 //     public static void main(String[] args) {
 //     }
 // }
+import java.util.ArrayList;
+
 public class ARR {
     public static void main(String[] args) {
+        // boolean label = Integer.parseInt("0") == 1;
+        // System.out.println(label);
+        // Dataset entry = new Dataset("C:\\142\\ICTtrainer\\src\\untitle\\src\\honk.csv");
+        // for (DSEntry e : entry.entries) {
+        //     System.out.println(" : " + e.message);
+        //     System.out.println("Is Spam: " + e.isSpam);
+        //     System.out.println("Average Word Length: " + e.getAverageWordLength());
+        //     System.out.println();
+        // }
+    }
+
+    public static ArrayList<String> spamem(){
+        ArrayList<String> spamema = new ArrayList<>();
         boolean label = Integer.parseInt("0") == 1;
         System.out.println(label);
         Dataset entry = new Dataset("C:\\142\\ICTtrainer\\src\\untitle\\src\\honk.csv");
         for (DSEntry e : entry.entries) {
-            System.out.println(" : " + e.message);
-            System.out.println("Is Spam: " + e.isSpam);
-            System.out.println("Average Word Length: " + e.getAverageWordLength());
-            System.out.println();
+            // System.out.println(" : " + e.message);
+            // System.out.println("Is Spam: " + e.isSpam);
+            // System.out.println("Average Word Length: " + e.getAverageWordLength());
+            // System.out.println();
+            if(e.isSpam == true){
+                spamema.add(e.message);
+            }
         }
+        return spamema;
+    }
+    public static ArrayList<String> hamem(){
+        ArrayList<String> hamema = new ArrayList<>();
+        // boolean label = Integer.parseInt("0") == 1;
+        // System.out.println(label);
+        Dataset entry = new Dataset("C:\\142\\ICTtrainer\\src\\untitle\\src\\honk.csv");
+        for (DSEntry e : entry.entries) {
+            // System.out.println(" : " + e.message);
+            // System.out.println("Is Spam: " + e.isSpam);
+
+            if(e.isSpam == false){
+                hamema.add(e.message);
+            }
+            
+        }
+        return hamema;
     }
 } 
