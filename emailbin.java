@@ -1,16 +1,30 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-public class emailbin{
-    public static void main(String[]args){
-        HashMap<String, Integer> mapsp = new HashMap<>();
-        HashMap<String, Integer> maph = new HashMap<>();
-        HashMap<String, Integer> mapavgsp = new HashMap<>();
-        HashMap<String, Integer> mapavgh = new HashMap<>();
-        ArrayList<String> emlcmb = new ArrayList<>();
+// import java.util.Arrays;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.HashMap;
+// public class emailbin{
+//     public static void main(String[]args){
+//         HashMap<String, Integer> mapsp = new HashMap<>();
+//         HashMap<String, Integer> maph = new HashMap<>();
+//         HashMap<String, Integer> mapavgsp = new HashMap<>();
+//         HashMap<String, Integer> mapavgh = new HashMap<>();
+//         int wsph = worddd.getword
+        
+//         ArrayList<String> emlcmb = new ArrayList<>();
 
-        ArrayList<String> spamemails = new ArrayList<>();
-
-
+//         String[] words = email.split(" ");
+//         int words = words.length;
+//         String[] spamWords = {"free", "win", "winner", "cash", "prize", "money", "urgent", "offer", "click", "buy", "cheap", "discount", "limited", "deal", "bonus", "http", "www"};
+        
+//         for (int i = 0; i < words.length; i++) {
+//             String w = words[i];
+//             int spook = 0;
+//             for (int j = 0; j < spamWords.length; j++) {
+//                 if (w.equals(spamWords[j])) {
+//                     spook++;
+//                 }
+//             }
+//         }// 
 
         // Arraylist<String> wordocc = n a l<>;
         // int emails = emailsct.length;
@@ -28,8 +42,8 @@ public class emailbin{
         // int spsc = 0
         // int hsc = 0 
 
-    }
-}
+//     }
+// }
 
 
 

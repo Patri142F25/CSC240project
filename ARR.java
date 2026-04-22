@@ -47,10 +47,9 @@ public class ARR {
 
     public static ArrayList<String> spamem(){
         ArrayList<String> spamema = new ArrayList<>();
-        boolean label = Integer.parseInt("0") == 1;
-        System.out.println(label);
-        Dataset entry = new Dataset("C:\\142\\ICTtrainer\\src\\untitle\\src\\honk.csv");
-        for (DSEntry e : entry.entries) {
+        
+        Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        for (DSEntry e : entr.entries) {
             // System.out.println(" : " + e.message);
             // System.out.println("Is Spam: " + e.isSpam);
             // System.out.println("Average Word Length: " + e.getAverageWordLength());
@@ -65,8 +64,8 @@ public class ARR {
         ArrayList<String> hamema = new ArrayList<>();
         // boolean label = Integer.parseInt("0") == 1;
         // System.out.println(label);
-        Dataset entry = new Dataset("C:\\142\\ICTtrainer\\src\\untitle\\src\\honk.csv");
-        for (DSEntry e : entry.entries) {
+        Dataset ent = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        for (DSEntry e : ent.entries) {
             // System.out.println(" : " + e.message);
             // System.out.println("Is Spam: " + e.isSpam);
 

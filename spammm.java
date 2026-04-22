@@ -1,7 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 public class spammm{
     public static void main(String[]args){
@@ -66,8 +63,8 @@ public class spammm{
                 }
             }
         }
-        double totspookspam = spkspam/wctsp;// spookword percentage in spam emails
-        double totspksphundred = totspookspam*100;
+        double totspookspam = spkspam/wctsp;// spookword percentage in spam emails System.out.println("decimal for spookword occurance in spam is " + totspookspam);
+        double totspksphundred = totspookspam*100;// System.out.println("percent of spook in spam is " + totspksphundred);
 
         for(int i = 0;i<spamemails.size();i++){
             String[] charinsp = spamemails.get(i).split("");
@@ -78,8 +75,8 @@ public class spammm{
                 }
             }
         }
-        double spex = spexc/charsp;// exclamation mark divided by the char count in spam
-        double honkk = spex*100;
+        double spex = spexc/charsp;// exclamation mark divided by the char count in spam System.out.println("exclamation mark count divided by char count in spam " + spex)
+        double honkk = spex*100;// System.out.println("percent of the exclamation mark count out of all chars in spam" honkk);
 
 
         for(int i = 0;i<spamemails.size();i++){
@@ -92,7 +89,7 @@ public class spammm{
                 }
             }
         }
-        double urlpwordsp = urlsp/wctsp;
+        double urlpwordsp = urlsp/wctsp; // System.out.println("urls per word in spam is " + urlpwordsp);
 
 
 
@@ -118,7 +115,7 @@ public class spammm{
                 }
             }
         }
-        double totspookham = spkham/wcth;// spookword percentage in ham emails
+        double totspookham = spkham/wcth;// spookword percentage in ham emails System.out.println("spookwords out of all words in ham " + totspookham);
         
        
 
@@ -131,12 +128,11 @@ public class spammm{
                 }
             }
         }
-        double hamexcl = hexcl/wcth;// how many exclamation points per char
+        double hamexcl = hexcl/wcth;// how many exclamation points per charSystem.out.println("exclamarion marks per character in ham is " + hamexcl);
 
         for(int i = 0;i<hamemails.size();i++){
             String[] wordh = hamemails.get(i).split(" ");
             for(int j = 0;j<wordh.length;j++){
-                
                 for(int k = 0;k < links.length;k++){
                     if((wordh[j].toLowerCase().equals(links[k])) == true){
                         urlh++;
@@ -144,7 +140,25 @@ public class spammm{
                 }
             }
         }
-        double urlpwordh = urlh/wcth;
+        
+        
+        double urlpwordh = urlh/wcth;// System.out.println("url divided by wordct in ham is " + urlpwordh);
+        // spam
+        System.out.println("decimal for spookword occurance in spam is " + totspookspam);
+        System.out.println("percent of spook in spam is " + totspksphundred);
+        System.out.println("exclamation mark count divided by char count in spam " + spex);
+        System.out.println("percent of the exclamation mark count out of all chars in spam"  + honkk);
+        System.out.println("urls per word in spam is " + urlpwordsp);
+        // ham
+        System.out.println("spookwords out of all words in ham " + totspookham);
+        System.out.println("exclamarion marks per character in ham is " + hamexcl);
+        System.out.println("url divided by wordct in ham is " + urlpwordh);
+
+    }
+}
+
+
+        
 
 
         // END
