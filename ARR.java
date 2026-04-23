@@ -50,7 +50,7 @@ public class ARR {
         
         Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
         for (DSEntry e : entr.entries) {
-            // System.out.println(" : " + e.message);
+            // System.out.println(" : " + e.message); 
             // System.out.println("Is Spam: " + e.isSpam);
             // System.out.println("Average Word Length: " + e.getAverageWordLength());
             // System.out.println();

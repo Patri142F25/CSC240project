@@ -143,7 +143,12 @@ public class Dataset {
 
     public Dataset(String mc) {
         this.mc = mc;
-        this.entries = parseCSV();
+        // this.entries = parseCSV();
+    }
+    public Dataset(String mc, ArrayList<DSEntry> entries){
+        this.mc = mc;
+        this.entries = entries;
+
     }
 
     public static void main(String[] args) throws IOException {
@@ -284,9 +289,9 @@ public class Dataset {
 
             while ((line = fec.readLine()) != null) {
                 String[] ccb = line.split(",");
-                if (ccb.length < 2) {
-                    continue;
-                }
+                // if (ccb.length < 2) {
+                //     continue;
+                // } 
 
                 String messa = ccb[0];
                 boolean label = Integer.parseInt(ccb[1]) == 1;// if label == true spam++ else nonspam++

@@ -30,10 +30,10 @@ public class spammm{
         ArrayList<String> hamemails = new ArrayList<>(); //ham emails find the average time a word occurs in a ham email
         spamemails = ARR.spamem();
         hamemails = ARR.hamem();
-        String[] spookwords = {"free contract urgent claim click "};
+        String[] spookwords = {"free", "contract", "urgent", "claim", "click"};//String[] spookwords = {"free contract urgent claim click "};//String[] spookwords = {"free", "contract", "urgent", "claim", "click"};
         int diffspkct = 0 ;
-        String[] links = {"http www .com .org .net .ly "};
-        String[]excep = {"freedom contractor disclaimer proclaim overclaim underclaim freeload freely freeman carefree freewall freefall contraction contractive contractility contractile contractor contractual contractible"};
+        String[] links = {"http", "www", ".com", ".org", ".net", ".ly"};//String[] links = {"http www .com .org .net .ly "};String[] links = {"http", "www", ".com", ".org", ".net", ".ly"};
+        String[]excep = {"freedom", "contractor", "disclaimer", "proclaim", "overclaim", "underclaim", "freeload", "freely", "freeman", "carefree", "freewall", "freefall", "contraction", "contractive", "contractility", "contractile", "contractor", "contractual", "contractible"};
 
         
         
