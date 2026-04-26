@@ -49,7 +49,7 @@ public class spammm{
             for(int j = 0;j<wordinsp.length;j++){
                 wctsp++;
                 for(int k = 0;k < spookwords.length;k++){
-                    if((wordinsp[j].toLowerCase().equals(spookwords[k])) == true){
+                    if((wordinsp[j].toLowerCase().contains(spookwords[k])) == true){
                         int sppp = 0;
                         for(int sp = 0; sp<excep.length;sp++){
                             if ((wordinsp[j].contains(excep[sp])) == true){
@@ -63,6 +63,7 @@ public class spammm{
                 }
             }
         }
+        //the occure 3 times on average spam 2 on average ham 
         double totspookspam = spkspam/wctsp;// spookword percentage in spam emails System.out.println("decimal for spookword occurance in spam is " + totspookspam);
         double totspksphundred = totspookspam*100;// System.out.println("percent of spook in spam is " + totspksphundred);
 
@@ -83,7 +84,7 @@ public class spammm{
             String[] wordsp = spamemails.get(i).split(" ");
             for(int j = 0;j<wordsp.length;j++){
                 for(int k = 0;k < links.length;k++){
-                    if((wordsp[j].toLowerCase().equals(links[k])) == true){
+                    if((wordsp[j].toLowerCase().contains(links[k])) == true){
                         urlsp++;
                     } 
                 }
@@ -101,7 +102,7 @@ public class spammm{
             for(int j = 0;j<wordinh.length;j++){
                 wcth++;
                 for(int k = 0;k < spookwords.length;k++){
-                    if((wordinh[j].toLowerCase().equals(spookwords[k])) == true){
+                    if((wordinh[j].toLowerCase().contains(spookwords[k])) == true){
                         int sppp = 0;
                         for(int sp = 0; sp<excep.length;sp++){
                             if ((wordinh[j].contains(excep[sp])) == true){
@@ -109,7 +110,7 @@ public class spammm{
                             }
                         }
                         if(sppp == 0){
-                            spkspam++;
+                            spkham++;
                         }
                     } 
                 }
@@ -134,7 +135,7 @@ public class spammm{
             String[] wordh = hamemails.get(i).split(" ");
             for(int j = 0;j<wordh.length;j++){
                 for(int k = 0;k < links.length;k++){
-                    if((wordh[j].toLowerCase().equals(links[k])) == true){
+                    if((wordh[j].toLowerCase().contains(links[k])) == true){
                         urlh++;
                     } 
                 }

@@ -54,7 +54,7 @@ public class ARR {
             // System.out.println("Is Spam: " + e.isSpam);
             // System.out.println("Average Word Length: " + e.getAverageWordLength());
             // System.out.println();
-            if(e.isSpam == true){
+            if(e.isSpam){
                 spamema.add(e.message);
             }
         }
@@ -64,14 +64,16 @@ public class ARR {
         ArrayList<String> hamema = new ArrayList<>();
         // boolean label = Integer.parseInt("0") == 1;
         // System.out.println(label);
-        Dataset ent = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
-        for (DSEntry e : ent.entries) {
+        Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        for (DSEntry e : entr.entries) {
             // System.out.println(" : " + e.message);
             // System.out.println("Is Spam: " + e.isSpam);
 
-            if(e.isSpam == false){
+            
+            if(!e.isSpam){
                 hamema.add(e.message);
             }
+            
             
         }
         return hamema;

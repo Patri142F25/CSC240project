@@ -139,7 +139,7 @@ import java.util.Map;
 public class Dataset {
 
     public String mc;
-    public ArrayList<DSEntry> entries;
+    public ArrayList<DSEntry> entries = new ArrayList<>();
 
     public Dataset(String mc) {
         this.mc = mc;
@@ -150,6 +150,7 @@ public class Dataset {
         this.entries = entries;
 
     }
+    
 
     public static void main(String[] args) throws IOException {
 
