@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 public class spammm{
     public static void main(String[]args){
         int spkspam = 0;// how many total spam words in all spam emails
@@ -41,7 +40,7 @@ public class spammm{
 
         ArrayList<String> emailcombined = new ArrayList<>();
         ArrayList<String> wordocc = new ArrayList<>();
-        int emails = emailsct.size();
+        // int emails = emailsct.size();
 
         // SPAM
         for(int i = 0;i<spamemails.size();i++){
