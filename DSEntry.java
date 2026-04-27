@@ -5,6 +5,11 @@ public class DSEntry {
     //class DSEntry {
     public String message;
     public boolean isSpam;
+
+    public DSEntry(String message, boolean isSpam) {
+        this.message = message;
+        this.isSpam = isSpam;
+    }
     public static void main(String[] args) {
         
         
@@ -17,10 +22,7 @@ public class DSEntry {
         // }
     }
     
-    public DSEntry(String message, boolean isSpam) {
-        this.message = message;
-        this.isSpam = isSpam;
-    }
+    
     // booleam is spam if(1) is spam, if(0) is not spam
 
     public int getAverageWordLength() {
