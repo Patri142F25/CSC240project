@@ -38,14 +38,21 @@ public class ARR {
         System.out.println(label);
         Dataset entry = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
         for (DSEntry e : entry.entries) {
-            System.out.println(" : " + e.message);
+            //System.out.println(" : " + e.message);
             System.out.println("Is Spam: " + e.isSpam);
             System.out.println("Average Word Length: " + e.getAverageWordLength());
             System.out.println();
         }
+        int hamlen = hamem().size();
+        System.out.println(hamlen);
+        int spamlen = spamem().size();
+        System.out.println(spamlen);
+
+        // spamhonk();
+        // hamhonk();
     }
 
-    public ArrayList<String> spamem(){
+    public static ArrayList<String> spamem(){
         ArrayList<String> spamema = new ArrayList<>();
         
         Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
@@ -56,14 +63,18 @@ public class ARR {
             // System.out.println();
             if(e.isSpam){
                 spamema.add(e.message);
+                
             }
         }
+        
         return spamema;
     }
+    int nonspamct = 0;
     public static ArrayList<String> hamem(){
         ArrayList<String> hamema = new ArrayList<>();
         // boolean label = Integer.parseInt("0") == 1;
         // System.out.println(label);
+        
         Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
         for (DSEntry e : entr.entries) {
             // System.out.println(" : " + e.message);
@@ -76,6 +87,48 @@ public class ARR {
             
             
         }
+        
         return hamema;
     }
+    public static void hamhonk(){
+        ArrayList<String> hamema = new ArrayList<>();
+        // boolean label = Integer.parseInt("0") == 1;
+        // System.out.println(label);
+        int hamct = 0;
+        
+        Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        for (DSEntry e : entr.entries) {
+            // System.out.println(" : " + e.message);
+            // System.out.println("Is Spam: " + e.isSpam);
+
+
+            if(!e.isSpam){
+                hamema.add(e.message);
+                hamct++;
+            }
+            
+            
+        }
+        System.out.println(hamct);
+        
+        
+    }
+    public static void spamhonk(){
+        ArrayList<String> spamema = new ArrayList<>();
+        int spamct = 0;
+        Dataset entr = new Dataset("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        for (DSEntry e : entr.entries) {
+            // System.out.println(" : " + e.message); 
+            // System.out.println("Is Spam: " + e.isSpam);
+            // System.out.println("Average Word Length: " + e.getAverageWordLength());
+            // System.out.println();
+            if(e.isSpam){
+                spamema.add(e.message);
+                spamct++;
+            }
+        }
+        System.out.println(spamct);
+        
+    }
+    
 } 

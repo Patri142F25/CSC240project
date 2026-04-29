@@ -143,7 +143,7 @@ public class Dataset {
 
     public Dataset(String mc) {
         this.mc = mc;
-        // this.entries = parseCSV();
+        this.entries = parseCSV();
     }
     public Dataset(String mc, ArrayList<DSEntry> entries){
         this.mc = mc;
@@ -290,9 +290,9 @@ public class Dataset {
 
             while ((line = fec.readLine()) != null) {
                 String[] ccb = line.split(",");
-                // if (ccb.length < 2) {
-                //     continue;
-                // } 
+                if (ccb.length < 2 || ccb.length > 2) {
+                    continue;
+                } 
 
                 String messa = ccb[0];
                 boolean label = Integer.parseInt(ccb[1]) == 1;// if label == true spam++ else nonspam++

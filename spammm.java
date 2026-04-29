@@ -189,6 +189,8 @@
 // ENHANCED
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class spammm {
     public static void main(String[] args) {
@@ -202,11 +204,24 @@ public class spammm {
         int charh = 0; // total char count in ham
         int urlh = 0; // total url in ham
         int urlsp = 0; // total url in spam
+        int numhct = 0;
+        int numspct = 0;
+        int numspctpch = 0;
+        int numhctpch = 0;
 
         ArrayList<String> spamemails = ARR.spamem();
         ArrayList<String> hamemails = ARR.hamem();
         if (spamemails == null) spamemails = new ArrayList<>();
         if (hamemails == null) hamemails = new ArrayList<>();
+
+        HashMap<String,Integer> maps = new HashMap<>();//occurance in each spam email
+        HashMap<String,Integer> maph = new HashMap<>();//occurance in each ham email
+        HashMap<String,Double> mapavgsp = new HashMap<>();//average occurance in a spam email
+        HashMap<String,Double> mapavgh = new HashMap<>(); //average occurance in a ham email
+        ArrayList<String> spamwords = new ArrayList<>();
+        ArrayList<String> hamwords = new ArrayList<>();
+
+
 
         String[] spookwords = {"free", "contract", "urgent", "claim", "click"};
         String[] links = {"http", "www", ".com", ".org", ".net", ".ly"};
@@ -217,33 +232,49 @@ public class spammm {
         // SPAM: word counts, spookwords, URLs, chars, exclamations
         for (String email : spamemails) {
             if (email == null) continue;
+
             String[] words = email.split("\\s+");
+
             for (String rawWord : words) {
+                
                 if (rawWord.length() == 0) continue;
                 wctsp++;
+                if (spamwords.contains(rawWord)== false) {
+                    spamwords.add(rawWord);
+                    maps.put(rawWord,1);
+                }else{
+                    int ct = maps.get(rawWord);
+                    ct++;
+                    maps.replace(rawWord,ct);
+
+                }
                 String word = rawWord.toLowerCase();
-                // check spookwords excluding exceptions
+                // c
                 for (String spook : spookwords) {
                     if (word.contains(spook)) {
                         boolean isException = false;
-                        for (String ex : excep) {
-                            if (word.contains(ex)) {
+                        for (String nspk : excep) {
+                            if (word.contains(nspk)) {
                                 isException = true;
-                                break;
+                                
                             }
                         }
                         if (!isException) {
                             spkspam++;
-                            break;
+                            
                         }
                     }
                 }
-                // check links
+                // check links .com.net
+                int ct = 0;
                 for (String link : links) {
+                    
                     if (word.contains(link)) {
                         urlsp++;
-                        break;
+                        ct++;
+                        
                     }
+
                 }
             }
 
@@ -251,8 +282,17 @@ public class spammm {
             for (char c : email.toCharArray()) {
                 charsp++;
                 if (c == '!') spexc++;
+                if (c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9' || c == '0') numspct++;
             }
         }
+
+        // for(String shroom: spamwords){
+        //     int occ = maps.get(shroom);
+        //     if(occ > 1){
+        //         System.out.println(occ + " " + shroom);
+        //     }
+        //     //System.out.println(occ + " " + shroom);
+        // }
 
         // HAM: word counts, spookwords, URLs, chars, exclamations
         for (String email : hamemails) {
@@ -261,6 +301,16 @@ public class spammm {
             for (String rawWord : words) {
                 if (rawWord.length() == 0) continue;
                 wcth++;
+                if (hamwords.contains(rawWord)== false) {
+                    hamwords.add(rawWord);
+                    maph.put(rawWord,1);
+                }else if (hamwords.contains(rawWord) == true){
+                    int ct = maph.get(rawWord);
+                    //int ctt = Integer.parseInt(ct.toString());
+                    ct++;
+                    maph.replace(rawWord,ct);
+
+                }
                 String word = rawWord.toLowerCase();
                 for (String spook : spookwords) {
                     if (word.contains(spook)) {
@@ -268,19 +318,18 @@ public class spammm {
                         for (String ex : excep) {
                             if (word.contains(ex)) {
                                 isException = true;
-                                break;
+                                
                             }
                         }
                         if (!isException) {
                             spkham++;
-                            break;
+                            
                         }
                     }
                 }
-                for (String link : links) {
-                    if (word.contains(link)) {
+                for (String l : links) {
+                    if (word.contains(l)) {
                         urlh++;
-                        break;
                     }
                 }
             }
@@ -288,8 +337,44 @@ public class spammm {
             for (char c : email.toCharArray()) {
                 charh++;
                 if (c == '!') hexcl++;
+                if (c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9' || c == '0') numhct++;
             }
         }
+        ArrayList<String> spbutnoth = new ArrayList<>();
+        ArrayList<String> hbutnotsp = new ArrayList<>();
+        for(String honk:spamwords){
+            int h = 0;
+            for(String deer: hamwords){
+                if(deer.equals(honk)){
+                    h++;
+                }
+            }
+            if(h==0){
+                spbutnoth.add(honk);
+            }
+        }
+        for(String honk:hamwords){
+            int h = 0;
+            for(String deer: spamwords){
+                if(deer.equals(honk)){
+                    h++;
+                }
+            }
+            if(h==0){
+                hbutnotsp.add(honk);
+            }
+        }
+        int spookcttt = 0;
+        for(int i = 0;i<spbutnoth.size();i++){
+            String banshee = (String) spbutnoth.get(i);
+            //System.out.println(banshee);
+            int occ = maps.get(banshee);
+            spookcttt += occ;
+
+            //System.out.println(occ + " " + shroom);
+        }
+
+        
 
         // Results (use double casts to avoid integer division)
         if (wctsp > 0) {
@@ -298,23 +383,53 @@ public class spammm {
             double urlpwordsp = (double) urlsp / (double) wctsp;
             double spex = (double) spexc / (double) charsp;
             double honkk = spex * 100;
+            double numpchsp = (double) numspct/ (double)charsp;
+            double nummm = numpchsp * 100;
+            double spkpword = (double) spookcttt / (double) wctsp;
+            
+
 
             System.out.println("decimal for spookword occurance in spam is " + totspookspam);
             System.out.println("percent of spook in spam is " + totspksphundred);
             System.out.println("urls per word in spam is " + urlpwordsp);
             System.out.println("exclamation mark count divided by char count in spam " + spex);
             System.out.println("percent of the exclamation mark count out of all chars in spam " + honkk);
+            System.out.println("numbers count divided by charct = " + numpchsp);
+            System.out.println("numbers count divided by charct *100 " + nummm);
+            System.out.println(numspct);
+            System.out.println("unique spam words that dont appear in ham divided by word count in spam " + spkpword);
+
         }
 
         if (wcth > 0) {
             double urlpwordh = (double) urlh / (double) wcth;
             double hamexcl = (double) hexcl / (double) charh;
             double totspookham = (double) spkham / (double) wcth;
+            double urlpwordhpct = urlpwordh*100;
+            double hamexclpct = hamexcl*100;
+            double totspookhampct = totspookham*100;
+            double numpchh = (double) numhct/ (double)charh;
+            double nummmm = numpchh * 100;
+            System.out.println();
+            System.out.println();
+            System.out.println("Ham");
+            System.out.println();
 
-            System.out.println("url divided by wordct in ham is " + urlpwordh);
-            System.out.println("exclamation marks per character in ham is " + hamexcl);
-            System.out.println("spookwords out of all words in ham " + totspookham);
+
+            System.out.println("url divided by wordct in ham is " + urlpwordh + "times a hundred = " + urlpwordhpct);
+            
+            System.out.println("exclamation marks per character in ham is " + hamexcl + "times a hundred = " + hamexclpct);
+            System.out.println("spookwords out of all words in ham " + totspookham + "times a hundred = " + totspookhampct);
+        
+            System.out.println("numbers count divided by charct = " + numpchh);
+            System.out.println("");
+            System.out.println("numbers count divided by charct *100 " + nummmm);
+            System.out.println(numhct);
+        
         }
+
+
+        
     }
 }
 
@@ -326,6 +441,10 @@ public class spammm {
 
 
 //END OF ENHANCED
+
+// WORD COUNT 
+
+
 
 // //1/5 = spam 1/400 = ham
 
