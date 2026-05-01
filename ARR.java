@@ -48,6 +48,7 @@ public class ARR {
         int spamlen = spamem().size();
         System.out.println(spamlen);
 
+
         // spamhonk();
         // hamhonk();
     }
@@ -90,6 +91,47 @@ public class ARR {
         
         return hamema;
     }
+
+
+    public static ArrayList<String> tspamem(String file){
+        ArrayList<String> spamemat = new ArrayList<>();
+        
+        Dataset entr = new Dataset(file);
+        for (DSEntry e : entr.entries) {
+            // System.out.println(" : " + e.message); 
+            // System.out.println("Is Spam: " + e.isSpam);
+            // System.out.println("Average Word Length: " + e.getAverageWordLength());
+            // System.out.println();
+            if(e.isSpam){
+                spamemat.add(e.message);
+                
+            }
+        }
+        
+        return spamemat;
+    }
+    public static ArrayList<String> thamem(String fil){
+        ArrayList<String> hamemat = new ArrayList<>();
+        
+        Dataset entr = new Dataset(fil);
+        for (DSEntry e : entr.entries) {
+            // System.out.println(" : " + e.message); 
+            // System.out.println("Is Spam: " + e.isSpam);
+            // System.out.println("Average Word Length: " + e.getAverageWordLength());
+            // System.out.println();
+            if(e.isSpam){
+                hamemat.add(e.message);
+                
+            }
+        }
+        
+        return hamemat;
+    }
+
+
+
+
+
     public static void hamhonk(){
         ArrayList<String> hamema = new ArrayList<>();
         // boolean label = Integer.parseInt("0") == 1;

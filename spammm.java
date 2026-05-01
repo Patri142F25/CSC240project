@@ -211,6 +211,9 @@ public class spammm {
 
         ArrayList<String> spamemails = ARR.spamem();
         ArrayList<String> hamemails = ARR.hamem();
+        
+
+
         if (spamemails == null) spamemails = new ArrayList<>();
         if (hamemails == null) hamemails = new ArrayList<>();
 
@@ -221,6 +224,11 @@ public class spammm {
         ArrayList<String> spamwords = new ArrayList<>();
         ArrayList<String> hamwords = new ArrayList<>();
 
+        ArrayList<String> tspam = new ArrayList<>();
+        ArrayList<String> tham = new ArrayList<>();
+
+        // for email in tspam string[] words = email.split(" ") for word in words{ for spook in spokwords {if word.equals(spook) spkspam++ } 
+
 
 
         String[] spookwords = {"free", "contract", "urgent", "claim", "click"};
@@ -230,6 +238,7 @@ public class spammm {
                 "contractive", "contractility", "contractile", "contractual", "contractible"};
 
         // SPAM: word counts, spookwords, URLs, chars, exclamations
+        System.out.println(spamemails.size());
         for (String email : spamemails) {
             if (email == null) continue;
 
@@ -371,13 +380,15 @@ public class spammm {
             int occ = maps.get(banshee);
             spookcttt += occ;
 
-            //System.out.println(occ + " " + shroom);
+            
         }
-
         
 
+        
+        double spkpct = 0;
         // Results (use double casts to avoid integer division)
         if (wctsp > 0) {
+            System.out.println(spookcttt + " gyro jungle ");
             double totspookspam = (double) spkspam / (double) wctsp;
             double totspksphundred = totspookspam * 100;
             double urlpwordsp = (double) urlsp / (double) wctsp;
@@ -386,20 +397,26 @@ public class spammm {
             double numpchsp = (double) numspct/ (double)charsp;
             double nummm = numpchsp * 100;
             double spkpword = (double) spookcttt / (double) wctsp;
+
+
+            double spkpemail = (double) spookcttt / (double) spamemails.size();
+            System.out.println("spook words per email in spam is " + spkpemail);
+            spkpct = spkpword;
             
 
 
-            System.out.println("decimal for spookword occurance in spam is " + totspookspam);
-            System.out.println("percent of spook in spam is " + totspksphundred);
-            System.out.println("urls per word in spam is " + urlpwordsp);
-            System.out.println("exclamation mark count divided by char count in spam " + spex);
-            System.out.println("percent of the exclamation mark count out of all chars in spam " + honkk);
-            System.out.println("numbers count divided by charct = " + numpchsp);
-            System.out.println("numbers count divided by charct *100 " + nummm);
-            System.out.println(numspct);
-            System.out.println("unique spam words that dont appear in ham divided by word count in spam " + spkpword);
+            // System.out.println("decimal for spookword occurance in spam is " + totspookspam);
+            // System.out.println("percent of spook in spam is " + totspksphundred);
+            // System.out.println("urls per word in spam is " + urlpwordsp);
+            // System.out.println("exclamation mark count divided by char count in spam " + spex);
+            // System.out.println("percent of the exclamation mark count out of all chars in spam " + honkk);
+            // System.out.println("numbers count divided by charct = " + numpchsp);
+            // System.out.println("numbers count divided by charct *100 " + nummm);
+            // System.out.println(numspct);
+            // System.out.println("unique spam words that dont appear in ham divided by word count in spam " + spkpword);
 
         }
+        
 
         if (wcth > 0) {
             double urlpwordh = (double) urlh / (double) wcth;
@@ -416,21 +433,61 @@ public class spammm {
             System.out.println();
 
 
-            System.out.println("url divided by wordct in ham is " + urlpwordh + "times a hundred = " + urlpwordhpct);
+            // System.out.println("url divided by wordct in ham is " + urlpwordh + "times a hundred = " + urlpwordhpct);
             
-            System.out.println("exclamation marks per character in ham is " + hamexcl + "times a hundred = " + hamexclpct);
-            System.out.println("spookwords out of all words in ham " + totspookham + "times a hundred = " + totspookhampct);
+            // System.out.println("exclamation marks per character in ham is " + hamexcl + "times a hundred = " + hamexclpct);
+            // System.out.println("spookwords out of all words in ham " + totspookham + "times a hundred = " + totspookhampct);
         
-            System.out.println("numbers count divided by charct = " + numpchh);
-            System.out.println("");
-            System.out.println("numbers count divided by charct *100 " + nummmm);
-            System.out.println(numhct);
+            // System.out.println("numbers count divided by charct = " + numpchh);
+            // System.out.println("");
+            // System.out.println("numbers count divided by charct *100 " + nummmm);
+            // System.out.println(numhct);
         
+        }
+        
+        ArrayList<String> t1spamemails = ARR.tspamem("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        ArrayList<String> t1hamemails = ARR.thamem("C:\\Users\\clish\\github-classroom\\CSC-240\\CSC240project\\spam_or_not_spam(in).csv");
+        double t1s = t1spamemails.size();
+        double t1h = t1hamemails.size();
+        double spamc = 0;
+        for(String email: t1spamemails){
+            
+            double spookct = 0;
+            
+            String[] words = email.split(" ");
+            for(String word: words){
+                for(String spook: spbutnoth){
+                    String spkl = spook.toLowerCase();
+                    if(word.toLowerCase().equals(spook)){
+                        spookct++;
+                    }
+                }
+                
+            }
+            if(words.length > 0){
+                double spookpword = spookct/words.length;
+                if(spookpword >= spkpct){
+                    spamc += 1;
+                }
+            }
+            
+            
+        }
+        double spamacc = spamc/t1s;
+        double spamaccpct = spamacc*100;
+        System.out.println("Spam Accuracy: " + spamacc + " times a hundred = " + spamaccpct);
+        
+        for(String email: t1hamemails){
+            System.out.println(email);
         }
 
 
         
     }
+    
+
+
+    
 }
 
 
@@ -552,3 +609,6 @@ public class spammm {
 
 // //     }
 // // }
+
+
+// test set = 
